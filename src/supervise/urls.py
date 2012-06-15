@@ -6,6 +6,7 @@
 #
 # This file is part of Supervise project.
 
+import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
@@ -23,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # User accounts URLs
-    url(r'^u/', include('apps.thirdparty.userena.urls')),
+    url(r'^u/', include('userena.urls')),
 
 )
 

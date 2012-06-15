@@ -1,0 +1,2 @@
+django-userena
+django==1.4

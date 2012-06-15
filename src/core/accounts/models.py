@@ -10,9 +10,13 @@
 Accounts application for management of the user profiles.
 """
 
+from datetime import datetime
 from django.db import models
-from userena.models import UserenaBaseProfile
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
+
+from userena.models import UserenaLanguageBaseProfile
+
 
 class UserProfile(UserenaLanguageBaseProfile):
 

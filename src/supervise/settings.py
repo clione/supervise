@@ -28,7 +28,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db/development.db',
+        'NAME': 'supervise/db/development.db',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -53,7 +53,7 @@ LOGIN_REDIRECT_URL = '/u/%(username)s/'
 LOGIN_URL = '/u/signin/'
 LOGOUT_URL = '/u/signout/'
 ANONYMOUS_USER_ID = -1
-AUTH_PROFILE_MODULE = "core.accounts.UserProfile"
+AUTH_PROFILE_MODULE = "accounts.UserProfile"
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = ''
@@ -128,10 +128,12 @@ TEMPLATE_DIRS = (
 )
 
 THIRDPARTY_APPS = (
-    'apps.thirdparty.userena',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
 )
 
-SUPERVISE_APPS = (
+DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -141,7 +143,11 @@ SUPERVISE_APPS = (
     'django.contrib.admin',
 )
 
-INSTALLED_APPS = SUPERVISE_APPS + THIRDPARTY_APPS
+SUPERVISE_APPS = (
+    'core.accounts',
+)
+
+INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + SUPERVISE_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
