@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # User accounts URLs
-    url(r'^u/', include('userena.urls')),
+    url(r'^u/', include('apps.thirdparty.userena.urls')),
 
 )
 
