@@ -1,0 +1,41 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES" xml:lang="es-ES">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <!-- Load CSS -->
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}/css/screen.css"/>
+        <!-- End load CSS -->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}/assets/favicon.ico" type="image/ico"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="Description" content="e-cidadania es una plataforma de democracia participativa"/>
+        <meta name="Robots" content="all"/>
+        <!-- Load JavaScript -->
+        <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
+        {% block extrajs %}
+        {% endblock %}
+        <!-- End load JavaScript -->
+    </head>
+    <body>
+
+        <div class="row-fluid">
+
+            <div class="span12">
+                {% include "menu.html" %}
+            </div>
+
+            <div class="container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <div class="footer">    
+                <p>This is the footer part</p>
+            </div>
+            
+        </div>
+
+    </body>
+</html>

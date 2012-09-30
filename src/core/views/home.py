@@ -14,26 +14,34 @@ from django.views.generic import FormView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render_to_response, get_object_or_404, redirect
+from django.contrib import messages
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.comments.models import Comment
+from django.db.models import Count
 
-class ViewProject(DetailView):
+from supervise.settings.defaults import STATUS
+from apps.supervise.projects.models import Project
+from apps.supervise.news.models import Post
+
+def home(request):
 
 	"""
-	View the index page of a project.
+	Returns the main site page. Depending on the status of the site it will
+	show an overview of the projects or a login page in case it's private.
 
-	..versionadded:: 2.0.1
+	.. versionadded:: 2.0.1
+
+	:context: news, projects
 	"""
 
-	context_object_name = 'project'
-	template_name = 'projects/project_index.html'
+	projects = Project.objects.all()
+	news = Post.objects.all()
 
-	def get_object(self):
-		project = get_object_or_404(Project,
-									url = self.kwargs['project_title'])
-		return project
-
-	def get_context_data(self):
-		context = super(ViewProject, self).get_context_data(**kwargs)
-		project = self.kwargs['project_title']
-		return context
+	if STATUS:
+		return render_to_response('site_index.html',
+								  {'projects': projects,
+								   'news': news },
+								  context_instance = RequestContext(request))
+	else:
+		return redirect('signin')
