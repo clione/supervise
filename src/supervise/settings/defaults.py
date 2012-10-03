@@ -33,6 +33,7 @@ USE_TZ = True
 # Public status of the site: 0 means private. 1 means public. Private will
 # ask the users to login to enter. Default: 1
 STATUS = 1
+SITE_NAME = "supervise"
 
 LANGUAGES = (
     ('en_GB', 'English'),
@@ -112,6 +113,7 @@ THIRDPARTY_APPS = (
     'apps.thirdparty.userena',
     'guardian',
     'easy_thumbnails',
+    'apps.thirdparty.taggit',
 )
 
 DJANGO_APPS = (
@@ -126,6 +128,11 @@ DJANGO_APPS = (
 
 SUPERVISE_APPS = (
     'core.accounts',
+    'apps.supervise.news',
+    'apps.supervise.issues',
+    'apps.supervise.projects',
+    'apps.supervise.wiki',
+    'apps.supervise.workgroups',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + SUPERVISE_APPS
