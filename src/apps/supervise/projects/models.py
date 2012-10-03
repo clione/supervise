@@ -8,6 +8,9 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
+
+from apps.thirdparty.taggit.managers import TaggableManager
 
 
 class Project(models.Model):
@@ -19,14 +22,15 @@ class Project(models.Model):
     ..versionadded:: 2.0.1
     """
 
-    title = models.CharField(_('Title'), max_length=250)
+    name = models.CharField(_('Title'), max_length=250)
     url = models.CharField(_('URL'), max_length=250)
     description = models.TextField(_('Description'))
     icon = models.ImageField(_('Icon'))
     public = models.BooleanField(_('Public'))
+    tags = TaggableManager()
 
     admins = models.ManyToManyField(User)
-    workers = models.ManyToManyField(User)
+    group = models.ForeignKey(Group)
 
     # Base modules
     mod_wiki = models.BooleanField(_('Wiki'))
