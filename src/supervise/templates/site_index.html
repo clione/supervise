@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block title %}{{ sitename }}{% endblock %}
+
+{% block menu %}
+    <div class="nav nav-list">
+        <li><a href="#">{% trans "Projects" %}</a></li>
+        <li><a href="#">{% trans "News" %}</a></li>
+        <li><a href="#">{% trans "Commits" %}</a></li>
+        <li><a href="#">{% trans "Issues" %}</a></li>
+    </div>
+{% endblock %}
+
 {% block content %}
+
+    {% for obj in activity %}
+        <div class="olist olist-{{ obj.type }}">
+            <h5>{{ obj.name }}</h5>
+            <p>{{ obj.description }}</p>
+        </div>
+    {% endfor %}
+
 {% endblock %}
