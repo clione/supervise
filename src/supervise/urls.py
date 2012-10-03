@@ -26,6 +26,9 @@ urlpatterns = patterns('',
     # User accounts URLs
     url(r'^u/$', include('apps.thirdparty.userena.urls')),
 
+    # Work groups
+    url(r'^g/$', include('apps.supervise.workgroups.urls')),
+    
     # Projects URLs
     url(r'^p/$', include('apps.supervise.projects.urls')),
 
