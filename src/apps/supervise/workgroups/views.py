@@ -29,6 +29,8 @@ from apps.supervise.workgroups.forms import WorkgroupForm
 class ListWorkgroups(ListView):
 
     """
+    List all the workgroups in the platform.
+
     .. versionadded:: 2.0.1
     """
     paginate_by = 10
@@ -42,6 +44,9 @@ class ListWorkgroups(ListView):
 class WorkgroupDetail(DetailView):
 
     """
+    Show a list of the people inside a working group and the attached projects
+    to it.
+
     .. versionadded:: 2.0.1
     """
     context_object_name = 'workgroup'
@@ -55,6 +60,8 @@ class WorkgroupDetail(DetailView):
 class AddWorkgroup(FormView):
 
     """
+    Create a new working group.
+
     .. versionadded:: 2.0.1
     """
     form_class = WorkgroupForm
@@ -89,7 +96,7 @@ class EditWorkgroup(UpdateView):
 
     @method_decorator(permission_required('workgroups.edit_workgroup'))
     def dispatch(self, *args, **kwargs):
-        return super(Ed)
+        return super(EdittWorkgroup)
 
 
 class DeleteWorkgroup(DeleteView):

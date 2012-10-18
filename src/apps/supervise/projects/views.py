@@ -17,6 +17,8 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from apps.supervise.projects.models import Project
+
 class ViewProject(DetailView):
 
 	"""
@@ -37,3 +39,57 @@ class ViewProject(DetailView):
 		context = super(ViewProject, self).get_context_data(**kwargs)
 		project = self.kwargs['project_title']
 		return context
+
+class EditProject(UpdateView):
+
+	"""
+	Edit current project raising a generic project form.
+
+	:rtype: HTML form
+
+	.. versionadded:: 2.0.1
+	"""
+	model = Project
+    template_name = 'projects/project_form.html'
+    success_url = reverse('project_list')
+
+    def get_object(self):
+        prj = get_object_or_404(Project, url=self.kwargs['project_url'])
+        return prj
+
+    @method_decorator(permission_required('projects.edit_project'))
+    def dispatch(self, *args, **kwargs):
+        return super(EditProject)
+
+
+class DeleteProject(DeleteView):
+
+	"""
+	Deletes the current project and it's related content.
+
+	.. versionadded:: 
+	"""
+    context_object_name = 'project'
+    success_url = reverse('project_detail')
+
+    def get_object(self):
+        prj = get_object_or_404(Project, url=self.kwargs['project_url'])
+        return prj
+
+    @method_decorator(permission_required('projects.delete_project'))
+    def dispatch(self, *args, **kwargs):
+        return super(DeleteProject, self).dispatch(*args, **kwargs)
+
+class ListProjects(ListView):
+
+	"""
+	List all the projects created in the platform.
+
+	.. versionadded:: 2.0.1
+	"""
+	paginate_by = 10
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super(ListProjects, self).get_context_data(**kwargs)
+        return context
