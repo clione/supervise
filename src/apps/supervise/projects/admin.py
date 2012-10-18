@@ -17,7 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 class ProjectAdmin(admin.ModelAdmin):
 
     """
-    This is the projct administration. pub_date and mod_date are automatically
+    This is the project administration. pub_date and mod_date are automatically
     filled. Here goes all the information about the projects.
 
     :list_display: name, url, description, public, pub_date, author

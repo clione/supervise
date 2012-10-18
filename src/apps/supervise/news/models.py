@@ -16,6 +16,9 @@ from apps.thirdparty.taggit.managers import TaggableManager
 class Post(models.Model):
 
     """
+    Post data model.
+
+    .. version
     """
     title = models.CharField(_('Title'), max_length=250)
     body = models.TextField(_('Body'))
