@@ -12,8 +12,14 @@ from django.utils.translation import ugettext_lazy as _
 
 urlpatterns = patterns('',
 
-    # Home page
-    url(r'^$', 'supervise.views.home', name='home'),
+    url(r'^/$', name='project_list'),
 
-    url(r'^<(?P<project_title>[\w\-]+)/$')
+    url(r'^<(?P<project_title>[\w\-]+)/$', name='project_detail'),
+
+    url(r'^add/$', name='project_add'),
+
+    url(r'^<(?P<project_title>[\w\-]+)/delete/$', name='project_delete'),
+
+    url(r'^<(?P<project_title>[\w\-]+)/edit/$', name='project_edit'),
+
 )

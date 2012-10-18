@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from apps.thirdparty.taggit.managers import TaggableManager
+from apps.supervise.workgroups.models import WorkGroup
 
 
 class Project(models.Model):
@@ -24,13 +25,13 @@ class Project(models.Model):
 
     name = models.CharField(_('Title'), max_length=250)
     url = models.CharField(_('URL'), max_length=250)
-    description = models.TextField(_('Description'))
-    icon = models.ImageField(_('Icon'))
+    description = models.TextField(_('Description'), null=True, blank=True)
+    icon = models.ImageField(_('Icon'), black=True, null=True)
     public = models.BooleanField(_('Public'))
     tags = TaggableManager()
 
     admins = models.ManyToManyField(User)
-    group = models.ForeignKey(Group)
+    group = models.ForeignKey(WorkGroup)
 
     # Base modules
     mod_wiki = models.BooleanField(_('Wiki'))
@@ -55,5 +56,5 @@ class Project(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('project_index', (), {
+        return ('project_detail', (), {
            'project_url': self.url})

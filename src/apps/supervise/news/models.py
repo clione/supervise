@@ -23,3 +23,24 @@ class Post(models.Model):
 
     pub_date = models.DateTimeField(auto_now_add=True)
     mod_date = models.DateTimeField(auto_add=True)
+    author = models.ForeignKey(User)
+
+    def name(self):
+        return self.title
+
+    def description(self):
+        return self.body
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = _('Post')
+        verbose_name_plural = _('Posts')
+        get_latest_by = 'pub_date'
+
+    def __unicode__(self):
+        return self.title
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('post_detail', (), {
+           'project_url': self.url})
