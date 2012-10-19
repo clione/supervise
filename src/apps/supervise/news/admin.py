@@ -18,11 +18,11 @@ class PostAdmin(admin.ModelAdmin):
 
     .. versionadded:: 2.0.1
     """
-    list_display = ('title', 'tags', 'author')
-    search_fields = ('title', 'description', 'tags')
+    list_display = ('title', 'tags', 'author', 'project')
+    search_fields = ('title', 'description', 'tags', 'author', 'project')
     fieldsets = [
         (_('Details'), {'fields':
-            ['title', 'body', 'tags', 'author']})
+            ['title', 'body', 'tags', 'project', 'author']})
     ]
 
     # This modification of the save_model method allows django to store

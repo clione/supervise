@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from apps.thirdparty.taggit.managers import TaggableManager
+from apps.supervise.projects.models import Project
 
 
 class Post(models.Model):
@@ -23,6 +24,7 @@ class Post(models.Model):
     title = models.CharField(_('Title'), max_length=250)
     body = models.TextField(_('Body'))
     tags = TaggableManager()
+    project = models.ForeignKey(Project)
 
     pub_date = models.DateTimeField(auto_now_add=True)
     mod_date = models.DateTimeField(auto_add=True)
