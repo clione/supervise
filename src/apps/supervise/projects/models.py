@@ -58,3 +58,25 @@ class Project(models.Model):
     def get_absolute_url(self):
         return ('project_detail', (), {
            'project_url': self.url})
+
+
+class Component(model.Model):
+
+    """
+    Data model that inherits from CommonInfo and stablishes the Components
+    of a project.
+    """
+    name = models.CharField(_('Name'))
+    description = models.TextField(_('Description'), blank=True, null=True)
+    author = models.ForeignKey(User)
+    pub_date = models.DateTimeField(_('Date'), auto_now_add=True)
+    project = models.ForeignKey(Project)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _('Component')
+        verbose_name_plural = _('Components')
+        get_latest_by = 'pub_date'
