@@ -21,6 +21,10 @@ class CommonInfo(models.Model):
 
     .. versionadded: 2.0.1
     """
+
+    # Programmers note:
+    # For the Status and type to be defaults, we need a field that validates
+    # only ONE object as the default, and prepopulates the field
     name = models.CharField(_('Name'))
     description = models.TextField(_('Description'), blank=True, null=True)
     author = models.ForeignKey(User)
@@ -73,8 +77,9 @@ class Ticket(models.Model):
     description = models.TextField(_('Description'))
     status = models.ForeignKey(Status)
     ttype = models.ForeignKey(Type)
-    component = model.ForeignKey(Component)
-    project = models.ForeignKey(Project)
+    component = model.ForeignKey(Component, blank=True, null=True)
+    project = models.ForeignKey(Project, blank=True, null=True)
+    owner = models.ForeignKey(User, blank=True, null=True)
 
     author = models.ForeignKey(User, blank=True, null=True)
     pub_date = models.DateTimeField(_('Date'), auto_now_add=True)
