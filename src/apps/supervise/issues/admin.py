@@ -47,7 +47,18 @@ class StatusAdmin(admin.ModelAdmin):
     .. versionadded:: 2.0.1
     """
     list_display = ('name', 'description', 'author')
-    
+    search_fields = ('name', 'description')
+    fieldsets = [
+        (_('Details'), {'fields':
+            ['name', 'description', 'author', 'pub_date']})
+    ]
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.author = request.user
+        obj.save()
+        obj.users.add(request.user)
+
 
 class TypeAdmin(admin.ModelAdmin):
 
@@ -56,14 +67,15 @@ class TypeAdmin(admin.ModelAdmin):
 
     .. versionadded:: 2.0.1
     """
+    list_display = ('name', 'description', 'author')
+    search_fields = ('name', 'description')
+    fieldsets = [
+        (_('Details'), {'fields':
+            ['name', 'description', 'author', 'pub_date']})
+    ]
 
-
-
-
-
-
-
-
-
-
-
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.author = request.user
+        obj.save()
+        obj.users.add(request.user)
