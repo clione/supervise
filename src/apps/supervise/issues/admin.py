@@ -13,7 +13,7 @@ Administration file for the issues  admin panel.
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from apps.supervise.projects.models import Project, Component
+from apps.supervise.issues.models import Ticket, Status, Type
 
 
 class TicketAdmin(admin.ModelAdmin):
@@ -36,7 +36,6 @@ class TicketAdmin(admin.ModelAdmin):
         if not change:
             obj.author = request.user
         obj.save()
-        obj.users.add(request.user)
 
 
 class StatusAdmin(admin.ModelAdmin):
@@ -57,7 +56,6 @@ class StatusAdmin(admin.ModelAdmin):
         if not change:
             obj.author = request.user
         obj.save()
-        obj.users.add(request.user)
 
 
 class TypeAdmin(admin.ModelAdmin):
@@ -78,4 +76,8 @@ class TypeAdmin(admin.ModelAdmin):
         if not change:
             obj.author = request.user
         obj.save()
-        obj.users.add(request.user)
+
+
+admin.site.register(Ticket, TicketAdmin)
+admin.site.register(Status, SpaceAdmin)
+admin.site.register(Type, TypeAdmin)

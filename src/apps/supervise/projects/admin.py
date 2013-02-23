@@ -16,6 +16,16 @@ from django.utils.translation import ugettext_lazy as _
 from apps.supervise.projects.models import Project, Component
 
 
+class ComponentInline(admin.TabularInline):
+
+    """
+    This admin inline creates the component section inside the Project form.
+
+    ..versionadded 2.0.1
+    """
+    model = Component
+
+
 class ProjectAdmin(admin.ModelAdmin):
 
     """
@@ -45,27 +55,8 @@ class ProjectAdmin(admin.ModelAdmin):
             ['pub_date', 'mod_date', 'author']}), 
     ]
 
-    # This modification of the save_model method allows django to store
-    # the author of the object automatically, even from the admin.
-    def save_model(self, request, obj, form, change):
-        if not change:
-            obj.author = request.user
-        obj.save()
-        obj.users.add(request.user)
-
-
-class ComponentAdmin(admin.modelAdmin):
-
-    """
-    Administration data model for the components around a project.
-
-    .. versionadded:: 2.0.1
-    """
-    list_display = ('name', 'description', 'project')
-    search_fields = ('name', 'description')
-    fieldsets = [
-        (_('Details'), {'fields':
-            ['name', 'description', 'project']}),
+    inlines = [
+        ComponentInline,
     ]
 
     # This modification of the save_model method allows django to store
@@ -74,8 +65,32 @@ class ComponentAdmin(admin.modelAdmin):
         if not change:
             obj.author = request.user
         obj.save()
-        obj.users.add(request.user)
-
 
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(Component, ComponentAdmin)
+
+# We leave this section of the admin commented since we already put the
+# components part in a inline inside every project, which we think it's better
+# for the end user.
+
+# class ComponentAdmin(admin.modelAdmin):
+
+#     """
+#     Administration data model for the components around a project.
+
+#     .. versionadded:: 2.0.1
+#     """
+#     list_display = ('name', 'description', 'project')
+#     search_fields = ('name', 'description')
+#     fieldsets = [
+#         (_('Details'), {'fields':
+#             ['name', 'description', 'project']}),
+#     ]
+
+#     # This modification of the save_model method allows django to store
+#     # the author of the object automatically, even from the admin.
+#     def save_model(self, request, obj, form, change):
+#         if not change:
+#             obj.author = request.user
+#         obj.save()
+
+#admin.site.register(Component, ComponentAdmin)
