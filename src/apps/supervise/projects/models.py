@@ -27,7 +27,7 @@ class Project(models.Model):
     url = models.CharField(_('URL'), max_length=250)
     description = models.TextField(_('Description'), null=True, blank=True)
     icon = models.ImageField(_('Icon'), black=True, null=True)
-    public = models.BooleanField(_('Public'))
+    private = models.BooleanField(_('Private'))
     tags = TaggableManager()
 
     admins = models.ManyToManyField(User)
