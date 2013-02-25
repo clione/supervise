@@ -27,6 +27,7 @@ class CommonInfo(models.Model):
     # only ONE object as the default, and prepopulates the field
     name = models.CharField(_('Name'))
     description = models.TextField(_('Description'), blank=True, null=True)
+    project = models.ForeignKey(Project)
     author = models.ForeignKey(User)
     pub_date = models.DateTimeField(_('Date'), auto_now_add=True)
 

@@ -25,4 +25,7 @@ urlpatterns = patterns('',
     url(r'^<(?P<project_url>[\w\-]+)/issues/$',
         include('apps.supervise.issues.urls')),
 
+    url(r'^<(?P<project_url>[\w\-]+)/news/$',
+        include('apps.supervise.news.urls')),
+
 )
