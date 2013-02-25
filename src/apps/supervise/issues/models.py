@@ -94,3 +94,9 @@ class Ticket(models.Model):
         verbose_name = _('Ticket')
         verbose_name_plural = _('Tickets')
         get_latest_by = 'pub_date'
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('issue_detail', (), {
+           'project_url': self.project.url,
+           'issue_id': self.id})
