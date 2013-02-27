@@ -17,7 +17,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     # Home page
-    url(r'^$', 'supervise.views.home', name='home'),
+    url(r'^$', 'core.views.home.home' , name='home'),
 
     # Administration
     url(r'^admin/', include(admin.site.urls)),
@@ -32,7 +32,7 @@ urlpatterns = patterns('',
     url(r'^p/$', include('apps.supervise.projects.urls')),
 
     # Static pages URLs
-    url(r'^s/$', include('apps.supervise.pages.urls')),
+    #url(r'^s/$', include('apps.supervise.pages.urls')),
 
 )
 

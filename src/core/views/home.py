@@ -16,6 +16,7 @@ from supervise.settings.defaults import STATUS, SITE_NAME
 from apps.supervise.projects.models import Project
 from apps.supervise.news.models import Post
 
+
 def home(request):
 
     """
@@ -29,7 +30,7 @@ def home(request):
 
     projects = Project.objects.all()
     news = Post.objects.all()
-    issues = 
+    #issues = 
 
     if STATUS:
         return render_to_response('site_index.html',
