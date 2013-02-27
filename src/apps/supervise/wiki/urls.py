@@ -9,16 +9,19 @@
 from django.conf.urls import patterns, include, url
 from django.utils.translation import ugettext_lazy as _
 
+from apps.supervise.wiki.url_names import *
+
+
 urlpatterns = patterns('',
 
-    url(r'^/$', name='issue_list'),
+    url(r'^/$', name='wiki_home'),
 
-    url(r'^add/$', name='issue_add'),
+    url(r'^<(?P<pagename>\d+)/$', name=CHECK_PAGE),
 
-    url(r'^<(?P<issue_id>\d+)/$', name='issue_detail'),
+    url(r'^<(?P<pagename>\d+)/add/$', name=ADD_PAGE),
 
-    url(r'^<(?P<issue_id>\d+)/delete/$', name='issue_delete'),
+    url(r'^<(?P<pagename>\d+)/delete/$', name=DELETE_PAGE),
 
-    url(r'^<(?P<issue_id>\d+)/edit/$', name='issue_edit'),
+    url(r'^<(?P<pagename>\d+)/edit/$', name=EDIT_PAGE),
 
 )
