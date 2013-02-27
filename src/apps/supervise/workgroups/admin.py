@@ -13,6 +13,8 @@ Administration file for the workgroups admin panel.
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
+from apps.supervise.workgroups.models import WorkGroup
+
 
 class WorkGroupAdmin(admin.ModelAdmin):
 
@@ -45,3 +47,5 @@ class WorkGroupAdmin(admin.ModelAdmin):
             obj.author = request.user
         obj.save()
         obj.users.add(request.user)
+
+admin.site.register(WorkGroup, WorkGroupAdmin)

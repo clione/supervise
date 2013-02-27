@@ -11,7 +11,6 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.utils.translation import ugettext_lazy as _
 
 admin.autodiscover()
 

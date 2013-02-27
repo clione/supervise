@@ -20,6 +20,14 @@ from django.utils.translation import ugettext_lazy as _
 from apps.supervise.news.models import Post
 from apps.supervise.projects.models import Project
 
+
+class CreatePost(FormView):
+
+    """
+    """
+    pass
+
+
 class ViewPost(DetailView):
 
     """
@@ -28,6 +36,7 @@ class ViewPost(DetailView):
     .. versionadded 2.0.1
     """
     pass
+
 
 class EditPost(UpdateView):
 
@@ -38,6 +47,7 @@ class EditPost(UpdateView):
     """
     pass
 
+
 class DeletePost(DeleteView):
 
     """
@@ -46,6 +56,7 @@ class DeletePost(DeleteView):
     .. versionadded:: 2.0.1
     """
     pass
+
 
 class ListPosts(ListView):
 

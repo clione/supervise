@@ -32,3 +32,5 @@ class PostAdmin(admin.ModelAdmin):
             obj.author = request.user
         obj.save()
         obj.users.add(request.user)
+
+admin.site.register(Post, PostAdmin)

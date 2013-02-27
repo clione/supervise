@@ -28,8 +28,9 @@ class TicketAdmin(admin.ModelAdmin):
             ['summary', 'description', ('status', 'ttype')]}),
         (_('Project details'), {'fields':
             [('project', 'component')]}),
-        (_('Other'), {'fields':
-            ['author', 'pub_date', 'last_mod', 'last_mod_author']}),
+        # This data isn't supposed to be editable
+        #(_('Other'), {'fields':
+        #    ['author', 'pub_date', 'last_mod', 'last_mod_author']}),
     ]
 
     def save_model(self, request, obj, form, change):
@@ -49,7 +50,7 @@ class StatusAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description')
     fieldsets = [
         (_('Details'), {'fields':
-            ['name', 'description', 'author', 'pub_date']})
+            ['name', 'description', 'author']})
     ]
 
     def save_model(self, request, obj, form, change):
@@ -69,7 +70,7 @@ class TypeAdmin(admin.ModelAdmin):
     search_fields = ('name', 'description')
     fieldsets = [
         (_('Details'), {'fields':
-            ['name', 'description', 'author', 'pub_date']})
+            ['name', 'description', 'author']})
     ]
 
     def save_model(self, request, obj, form, change):
@@ -79,5 +80,5 @@ class TypeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Ticket, TicketAdmin)
-admin.site.register(Status, SpaceAdmin)
+admin.site.register(Status, StatusAdmin)
 admin.site.register(Type, TypeAdmin)

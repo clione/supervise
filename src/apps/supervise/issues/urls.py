@@ -7,18 +7,23 @@
 # This file is part of Supervise project.
 
 from django.conf.urls import patterns, include, url
-from django.utils.translation import ugettext_lazy as _
+
+from apps.supervise.issues.views import AddTicket, EditTicket, DeleteTicket, \
+    ListTickets, ViewTicket
+
 
 urlpatterns = patterns('',
 
-    url(r'^/$', name='issue_list'),
+    url(r'^/$', ListTickets.as_view(), name='issue_list'),
 
-    url(r'^add/$', name='issue_add'),
+    url(r'^add/$', AddTicket.as_view(), name='issue_add'),
 
-    url(r'^<(?P<issue_id>\d+)/$', name='issue_detail'),
+    url(r'^<(?P<issue_id>\d+)/$', ViewTicket.as_view(), name='issue_detail'),
 
-    url(r'^<(?P<issue_id>\d+)/delete/$', name='issue_delete'),
+    url(r'^<(?P<issue_id>\d+)/delete/$', DeleteTicket.as_view(),
+        name='issue_delete'),
 
-    url(r'^<(?P<issue_id>\d+)/edit/$', name='issue_edit'),
+    url(r'^<(?P<issue_id>\d+)/edit/$', EditTicket.as_view(),
+        name='issue_edit'),
 
 )

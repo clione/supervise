@@ -37,22 +37,22 @@ class ProjectAdmin(admin.ModelAdmin):
 
     .. versionadded:: 2.0.1 
     """
-    list_display = ('name', 'url', 'description', 'public', 'pub_date',
+    list_display = ('name', 'url', 'description', 'private', 'pub_date',
                     'author')
     search_fields = ('name', 'url', 'description')
 
     fieldsets = [
         (_('Details'), {'fields':
-            ['icon', ('name', 'url'), 'description', 'public', 'tags']}),
+            ['icon', ('name', 'url'), 'description', 'private', 'tags']}),
 
         (_('Users'), {'fields':
             ['admins', 'group']}),
 
         (_('Modules'), {'fields':
             ['mod_wiki', 'mod_news', 'mod_vcs', 'mod_issues', 'mod_docs']}),
-
-        (_('Other'), {'fields':
-            ['pub_date', 'mod_date', 'author']}), 
+        # This isn't supposed to be editable
+        #(_('Other'), {'fields':
+        #    ['pub_date', 'mod_date', 'author']}), 
     ]
 
     inlines = [

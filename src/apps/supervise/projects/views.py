@@ -19,39 +19,48 @@ from django.utils.translation import ugettext_lazy as _
 
 from apps.supervise.projects.models import Project
 
+
+class CreateProject(FormView):
+
+    """
+    """
+    pass
+
+
 class ViewProject(DetailView):
 
-	"""
-	View the index page of a project.
+    """
+    View the index page of a project.
 
-	..versionadded:: 2.0.1
-	"""
+    ..versionadded:: 2.0.1
+    """
 
-	context_object_name = 'project'
-	template_name = 'projects/project_index.html'
+    context_object_name = 'project'
+    template_name = 'projects/project_index.html'
 
-	def get_object(self):
-		project = get_object_or_404(Project,
-									url = self.kwargs['project_title'])
-		return project
+    def get_object(self):
+        project = get_object_or_404(Project,
+            url = self.kwargs['project_title'])
+        return project
 
-	def get_context_data(self):
-		context = super(ViewProject, self).get_context_data(**kwargs)
-		project = self.kwargs['project_title']
-		return context
+    def get_context_data(self):
+        context = super(ViewProject, self).get_context_data(**kwargs)
+        project = self.kwargs['project_title']
+        return context
+
 
 class EditProject(UpdateView):
 
-	"""
-	Edit current project raising a generic project form.
+    """
+    Edit current project raising a generic project form.
 
-	:rtype: HTML form
+    :rtype: HTML form
 
-	.. versionadded:: 2.0.1
-	"""
-	model = Project
+    .. versionadded:: 2.0.1
+    """
+    model = Project
     template_name = 'projects/project_form.html'
-    success_url = reverse('project_list')
+    success_url = '/' #reverse('project_list')
 
     def get_object(self):
         prj = get_object_or_404(Project, url=self.kwargs['project_url'])
@@ -64,13 +73,13 @@ class EditProject(UpdateView):
 
 class DeleteProject(DeleteView):
 
-	"""
-	Deletes the current project and it's related content.
+    """
+    Deletes the current project and it's related content.
 
-	.. versionadded:: 
-	"""
+    .. versionadded:: 
+    """
     context_object_name = 'project'
-    success_url = reverse('project_detail')
+    success_url = '/' #reverse('project_list')
 
     def get_object(self):
         prj = get_object_or_404(Project, url=self.kwargs['project_url'])
@@ -80,14 +89,15 @@ class DeleteProject(DeleteView):
     def dispatch(self, *args, **kwargs):
         return super(DeleteProject, self).dispatch(*args, **kwargs)
 
+
 class ListProjects(ListView):
 
-	"""
-	List all the projects created in the platform.
+    """
+    List all the projects created in the platform.
 
-	.. versionadded:: 2.0.1
-	"""
-	paginate_by = 10
+    .. versionadded:: 2.0.1
+    """
+    paginate_by = 10
     model = Project
 
     def get_context_data(self, **kwargs):

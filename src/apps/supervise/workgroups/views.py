@@ -66,7 +66,7 @@ class AddWorkgroup(FormView):
     """
     form_class = WorkgroupForm
     template_name = 'workgroups/workgroup_form.html'
-    success_url = reverse('workgroups_home')
+    success_url = '/' #reverse('workgroups_home')
 
     def form_valid(self, form):
         wrkgrp = get_object_or_404(WorkGroup, id=self.kwargs['groupid'])
@@ -88,7 +88,7 @@ class EditWorkgroup(UpdateView):
     """
     model = WorkGroup
     template_name = 'workgroups/workgroup_form.html'
-    success_url = reverse('workgroups_home')
+    success_url = '/' #reverse('workgroups_home')
 
     def get_object(self):
         wrkgrp = get_object_or_404(WorkGroup, id=self.kwargs['groupid'])
@@ -104,7 +104,7 @@ class DeleteWorkgroup(DeleteView):
     """
     """
     context_object_name = 'workgroup'
-    success_url = reverse('workgroups_home')
+    success_url = '/' #reverse('workgroups_home')
 
     def get_object(self):
         wrkgrp = get_object_or_404(WorkGroup, id=self.kwargs['groupid'])
