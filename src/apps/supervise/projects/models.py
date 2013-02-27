@@ -26,11 +26,12 @@ class Project(models.Model):
     name = models.CharField(_('Title'), max_length=250)
     url = models.CharField(_('URL'), max_length=250)
     description = models.TextField(_('Description'), null=True, blank=True)
-    icon = models.ImageField(_('Icon'), black=True, null=True)
+    icon = models.ImageField(_('Icon'), blank=True, null=True,
+        upload_to='projects/logos')
     private = models.BooleanField(_('Private'))
     tags = TaggableManager()
 
-    admins = models.ManyToManyField(User)
+    admins = models.ManyToManyField(User, related_name='project_admins')
     group = models.ForeignKey(WorkGroup)
 
     # Base modules
@@ -42,17 +43,17 @@ class Project(models.Model):
 
     # Information of creation and modification
     pub_date = models.DateTimeField(auto_now_add=True)
-    mod_date = models.DateTimeField(auto_add=True)
+    mod_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User)
 
     class Meta:
-        ordering = ['title']
+        ordering = ['name']
         verbose_name = _('Project')
         verbose_name_plural = _('Projects')
         get_latest_by = 'pub_date'
 
     def __unicode__(self):
-        return self.title
+        return self.name
 
     @models.permalink
     def get_absolute_url(self):
@@ -60,13 +61,13 @@ class Project(models.Model):
            'project_url': self.url})
 
 
-class Component(model.Model):
+class Component(models.Model):
 
     """
     Data model that inherits from CommonInfo and stablishes the Components
     of a project.
     """
-    name = models.CharField(_('Name'))
+    name = models.CharField(_('Name'), max_length=250)
     description = models.TextField(_('Description'), blank=True, null=True)
     author = models.ForeignKey(User)
     pub_date = models.DateTimeField(_('Date'), auto_now_add=True)

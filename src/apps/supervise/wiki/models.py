@@ -25,10 +25,12 @@ class Page(models.Model):
     project = models.ForeignKey(Project)
     version = models.IntegerField(_('Version'), blank=True, null=True)
 
-    author = models.ForeignKey(User, blank=True, null=True)
+    author = models.ForeignKey(User, blank=True, null=True,
+        related_name='page_author')
     pub_date = models.DateTimeField(_('Date'), auto_now_add=True)
     last_mod = models.DateTimeField(_('Last update'), auto_now=True)
-    last_mod_author = models.ForeignKey(User, blank=True, null=True)
+    last_mod_author = models.ForeignKey(User, blank=True, null=True,
+        related_name='page_modified_author')
 
     class Meta:
         ordering = ['name']

@@ -25,7 +25,7 @@ class CommonInfo(models.Model):
     # Programmers note:
     # For the Status and type to be defaults, we need a field that validates
     # only ONE object as the default, and prepopulates the field
-    name = models.CharField(_('Name'))
+    name = models.CharField(_('Name'), max_length=250)
     description = models.TextField(_('Description'), blank=True, null=True)
     project = models.ForeignKey(Project)
     author = models.ForeignKey(User)
@@ -78,14 +78,17 @@ class Ticket(models.Model):
     description = models.TextField(_('Description'))
     status = models.ForeignKey(Status)
     ttype = models.ForeignKey(Type)
-    component = model.ForeignKey(Component, blank=True, null=True)
+    component = models.ForeignKey(Component, blank=True, null=True)
     project = models.ForeignKey(Project, blank=True, null=True)
-    owner = models.ForeignKey(User, blank=True, null=True)
+    owner = models.ForeignKey(User, blank=True, null=True,
+        related_name='ticket_owner')
 
-    author = models.ForeignKey(User, blank=True, null=True)
+    author = models.ForeignKey(User, blank=True, null=True,
+        related_name='ticket_author')
     pub_date = models.DateTimeField(_('Date'), auto_now_add=True)
     last_mod = models.DateTimeField(_('Last update'), auto_now=True)
-    last_mod_author = models.ForeignKey(User, blank=True, null=True)
+    last_mod_author = models.ForeignKey(User, blank=True, null=True,
+        related_name='ticket_modified_author')
 
     def __unicode__(self):
         return self.summary

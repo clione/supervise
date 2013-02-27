@@ -27,7 +27,7 @@ class Post(models.Model):
     project = models.ForeignKey(Project)
 
     pub_date = models.DateTimeField(auto_now_add=True)
-    mod_date = models.DateTimeField(auto_add=True)
+    mod_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User)
 
     def name(self):

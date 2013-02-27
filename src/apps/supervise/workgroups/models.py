@@ -24,8 +24,10 @@ class WorkGroup(models.Model):
     description = models.TextField(_('Description'), blank=True, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     mod_date = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User, blank=True, null=True)
-    users = models.ManyToManyField(User, blank=True, null=True)
+    author = models.ForeignKey(User, blank=True, null=True,
+        related_name='group_author')
+    users = models.ManyToManyField(User, blank=True, null=True,
+        related_name='group_users')
 
     class Meta:
         ordering = ['name']
