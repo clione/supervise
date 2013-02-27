@@ -6,15 +6,15 @@ from django.core.exceptions import ValidationError
 from django.db import connection
 from django.test import TestCase, TransactionTestCase
 
-from taggit.managers import TaggableManager
-from taggit.models import Tag, TaggedItem
-from taggit.tests.forms import (FoodForm, DirectFoodForm, CustomPKFoodForm,
+from apps.thirdparty.taggit.managers import TaggableManager
+from apps.thirdparty.taggit.models import Tag, TaggedItem
+from apps.thirdparty.taggit.tests.forms import (FoodForm, DirectFoodForm, CustomPKFoodForm,
     OfficialFoodForm)
-from taggit.tests.models import (Food, Pet, HousePet, DirectFood, DirectPet,
+from apps.thirdparty.taggit.tests.models import (Food, Pet, HousePet, DirectFood, DirectPet,
     DirectHousePet, TaggedPet, CustomPKFood, CustomPKPet, CustomPKHousePet,
     TaggedCustomPKPet, OfficialFood, OfficialPet, OfficialHousePet,
     OfficialThroughModel, OfficialTag, Photo, Movie, Article)
-from taggit.utils import parse_tags, edit_string_for_tags
+from apps.thirdparty.taggit.utils import parse_tags, edit_string_for_tags
 
 
 class BaseTaggingTest(object):

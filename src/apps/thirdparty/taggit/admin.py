@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from taggit.models import Tag, TaggedItem
+from apps.thirdparty.taggit.models import Tag, TaggedItem
 
 
 class TaggedItemInline(admin.StackedInline):

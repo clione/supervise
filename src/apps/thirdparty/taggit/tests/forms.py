@@ -1,6 +1,6 @@
 from django import forms
 
-from taggit.tests.models import Food, DirectFood, CustomPKFood, OfficialFood
+from apps.thirdparty.taggit.tests.models import Food, DirectFood, CustomPKFood, OfficialFood
 
 
 class FoodForm(forms.ModelForm):

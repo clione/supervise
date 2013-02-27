@@ -6,9 +6,9 @@ from django.db.models.related import RelatedObject
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
 
-from taggit.forms import TagField
-from taggit.models import TaggedItem, GenericTaggedItemBase
-from taggit.utils import require_instance_manager
+from apps.thirdparty.taggit.forms import TagField
+from apps.thirdparty.taggit.models import TaggedItem, GenericTaggedItemBase
+from apps.thirdparty.taggit.utils import require_instance_manager
 
 
 try:

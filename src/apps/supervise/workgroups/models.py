@@ -23,7 +23,7 @@ class WorkGroup(models.Model):
     name = models.CharField(_('Name'), max_length=250)
     description = models.TextField(_('Description'), blank=True, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
-    mod_date = models.DateTimeField(auto_add=True)
+    mod_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, blank=True, null=True)
     users = models.ManyToManyField(User, blank=True, null=True)
 
