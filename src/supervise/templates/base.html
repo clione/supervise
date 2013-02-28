@@ -13,8 +13,8 @@
     <link href="{{ STATIC_URL }}/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link id="base-style" href="{{ STATIC_URL }}/css/style.css" rel="stylesheet">
     <link id="base-style-responsive" href="{{ STATIC_URL }}/css/style-responsive.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ STATIC_URL }}/css/screen.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 
     {% block extrajstop %}
     {% endblock %}
@@ -28,6 +28,13 @@
         {% block content %}
         {% endblock %}
     </div>
+
+    <footer>
+        <p>
+            <span class="hidden-phone" style="text-align:left;float:left;margin-left:20px;">&copy; <a href="" target="_blank">clione software</a> 2013</span>
+            <span class="hidden-phone" style="text-align:right;float:right;margin-right:20px;"><a href="#">Help</a></span>
+        </p>
+    </footer>
     <script src="{{ STATIC_URL }}/js/jquery-1.9.1.min.js"></script>
     <script src="{{ STATIC_URL }}/js/jquery-migrate-1.0.0.min.js"></script>
     <script src="{{ STATIC_URL }}/js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -60,5 +67,6 @@
     <script src="{{ STATIC_URL }}/js/custom.js"></script>
     {% block extrajsbottom %}
     {% endblock %}
+    
 </body>
 </html>
