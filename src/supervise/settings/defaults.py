@@ -63,20 +63,22 @@ LOGOUT_URL = '/u/signout/'
 ANONYMOUS_USER_ID = -1
 AUTH_PROFILE_MODULE = "accounts.UserProfile"
 
-# Media and static directories and URLs settings
-MEDIA_ROOT = ''
-MEDIA_URL = ''
-
-STATIC_ROOT = ''
+# Configuration related to media and static content directories
+MEDIA_ROOT = cwd + '/uploads/'
+#print "Media root: %s" % MEDIA_ROOT
+MEDIA_URL = '/uploads/'
+STATIC_ROOT = cwd + '/static/'
+#print "Static root: %s" % STATIC_ROOT
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
 
+STATICFILES_DIRS = (
+    (cwd + '/static_files/'),
 )
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 TEMPLATE_LOADERS = (
@@ -107,6 +109,7 @@ ROOT_URLCONF = 'supervise.urls'
 WSGI_APPLICATION = 'supervise.wsgi.application'
 
 TEMPLATE_DIRS = (
+    (cwd + '/templates'),
 )
 
 THIRDPARTY_APPS = (

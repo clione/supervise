@@ -39,4 +39,5 @@ def home(request):
                                    'sitename': SITE_NAME },
                                   context_instance = RequestContext(request))
     else:
-        return redirect('signin')
+        return render_to_response('main_login.html',
+                                  context_instance = RequestContext(request))

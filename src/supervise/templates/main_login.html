@@ -1,0 +1,59 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}/img/logo.svg" sizes="any" type="image/svg+xml">
+    <meta name="description" content="supervise is a GPL project management tool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link id="bootstrap-style" href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link id="base-style" href="{{ STATIC_URL }}/css/style.css" rel="stylesheet">
+    <link id="base-style-responsive" href="{{ STATIC_URL }}/css/style-responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/screen.css">
+    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body { background: url({{ STATIC_URL }}/img/bg-login.jpg) !important; }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="row-fluid">
+                <div class="login-box">
+                    <h2>{% trans "Login to your account" %}</h2>
+                    <form class="form-horizontal" action="index.html" method="post">
+                        <fieldset>
+                            
+                            <div class="input-prepend" title="Username">
+                                <span class="add-on"><i class="halflings-icon user"></i></span>
+                                <input class="input-large span10" name="username" id="username" type="text" placeholder="Username"/>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <div class="input-prepend" title="Password">
+                                <span class="add-on"><i class="halflings-icon lock"></i></span>
+                                <input class="input-large span10" name="password" id="password" type="password" placeholder="Password"/>
+                            </div>
+                            <div class="clearfix"></div>
+                            
+                            <label class="remember" for="remember"><input type="checkbox" id="remember" /> {% trans "Remember me" %}</label>
+                            <div class="clearfix"></div>
+                            <p><a href="#">{% trans "Forgot Password?" %}</a></p>
+
+                            <div class="button-login" style="margin-top: -60px;">  
+                                <button type="submit" class="btn btn-primary btn-large">{% trans "Login" %}</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>

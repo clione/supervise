@@ -1,56 +1,64 @@
 {% load i18n %}
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es-ES" xml:lang="es-ES">
-    <head>
-        <title>{% block title %}{% endblock %}</title>
-        <!-- Load CSS -->
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}/css/font-awesome.css" />
-        <!--[if IE 7]>
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}/css/font-awesome-ie7.css" />
-        <![endif]-->
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Molengo' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ STATIC_URL }}/css/screen.css"/>
-        <!-- End load CSS -->
-        <link rel="icon" href="{{ STATIC_URL }}/img/logo.svg" sizes="any" type="image/svg+xml"> 
-        <!--<link rel="shortcut icon" href="{{ STATIC_URL }}/assets/favicon.ico" type="image/ico"/>-->
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="Description" content="supervise is a project management tool"/>
-        <meta name="Robots" content="all"/>
-        <!-- Load JavaScript -->
-        <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
-        {% block extrajs %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}/img/logo.svg" sizes="any" type="image/svg+xml">
+    <meta name="description" content="supervise is a GPL project management tool"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link id="bootstrap-style" href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link id="base-style" href="{{ STATIC_URL }}/css/style.css" rel="stylesheet">
+    <link id="base-style-responsive" href="{{ STATIC_URL }}/css/style-responsive.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/screen.css">
+
+    {% block extrajstop %}
+    {% endblock %}
+</head>
+
+<body>
+
+    {% include "menu.html" %}
+
+    <div class="container-fluid">
+        {% block content %}
         {% endblock %}
-        <!-- End load JavaScript -->
-    </head>
-    <body>
-
-        <div class="row-fluid">
-
-            <div class="span12 toprow">
-                {% include "menu.html" %}
-            </div>
-
-            <div class="container-fluid">
-
-                <div class="span3">
-                    {% block menu %}
-                    {% endblock %}
-                </div>
-
-                <div class="span9">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-
-            </div>
-
-            <div class="footer">    
-                <p>This is the footer part</p>
-            </div>
-            
-        </div>
-
-    </body>
+    </div>
+    <script src="{{ STATIC_URL }}/js/jquery-1.9.1.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery-migrate-1.0.0.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.ui.touch-punch.js"></script>
+    <script src="{{ STATIC_URL }}/js/modernizr.js"></script>
+    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.cookie.js"></script>
+    <script src='{{ STATIC_URL }}/js/fullcalendar.min.js'></script>
+    <script src='{{ STATIC_URL }}/js/jquery.dataTables.min.js'></script>
+    <script src="{{ STATIC_URL }}/js/excanvas.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.flot.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.flot.pie.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.flot.stack.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.flot.resize.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.chosen.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.uniform.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.cleditor.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.noty.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.elfinder.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.raty.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.iphone.toggle.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.uploadify-3.1.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.gritter.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.imagesloaded.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.masonry.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.knob.modified.js"></script>
+    <script src="{{ STATIC_URL }}/js/jquery.sparkline.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/counter.js"></script>
+    <script src="{{ STATIC_URL }}/js/retina.js"></script>
+    <script src="{{ STATIC_URL }}/js/custom.js"></script>
+    {% block extrajsbottom %}
+    {% endblock %}
+</body>
 </html>
