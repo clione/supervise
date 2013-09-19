@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2012 Clione Software
+# Copyright (c) 2012-2013 Clione Software
 # Authors: Oscar Carballal Prego <oscar@clionesoftware.com>
 # License: BSD Simplified (2-Clause BSD). See LICENSE for details.
 #
@@ -76,7 +76,7 @@ class DeleteProject(DeleteView):
     """
     Deletes the current project and it's related content.
 
-    .. versionadded:: 
+    .. versionadded::
     """
     context_object_name = 'project'
     success_url = '/' #reverse('project_list')

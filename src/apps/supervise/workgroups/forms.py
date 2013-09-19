@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2012 Clione Software
+# Copyright (c) 2012-2013 Clione Software
 # Authors: Oscar Carballal Prego <oscar@clionesoftware.com>
 # License: BSD Simplified (2-Clause BSD). See LICENSE for details.
 #
@@ -19,7 +19,7 @@ class WorkgroupForm(ModelForm):
     the fields from WorkGroup model.
 
     :rtype: HTML Form
-    
+
     .. versionadded :: 2.0.1
     """
     class Meta:

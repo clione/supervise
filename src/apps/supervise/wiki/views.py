@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2012 Clione Software
+# Copyright (c) 2012-2013 Clione Software
 # Authors: Oscar Carballal Prego <oscar@clionesoftware.com>
 # License: BSD Simplified (2-Clause BSD). See LICENSE for details.
 #
@@ -62,7 +62,7 @@ class CreatePage(FormView):
             'pagename':wikipage})
 
     def form_valid(self, form):
-        
+
     def get_context_data(self, **kwargs):
 
 

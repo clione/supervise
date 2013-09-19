@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2012 Clione Software
+# Copyright (c) 2012-2013 Clione Software
 # Authors: Oscar Carballal Prego <oscar@clionesoftware.com>
 # License: BSD Simplified (2-Clause BSD). See LICENSE for details.
 #
@@ -35,7 +35,7 @@ class ProjectAdmin(admin.ModelAdmin):
     :list_display: name, url, description, public, pub_date, author
     :search_fields: name, url, description
 
-    .. versionadded:: 2.0.1 
+    .. versionadded:: 2.0.1
     """
     list_display = ('name', 'url', 'description', 'private', 'pub_date',
                     'author')
@@ -52,7 +52,7 @@ class ProjectAdmin(admin.ModelAdmin):
             ['mod_wiki', 'mod_news', 'mod_vcs', 'mod_issues', 'mod_docs']}),
         # This isn't supposed to be editable
         #(_('Other'), {'fields':
-        #    ['pub_date', 'mod_date', 'author']}), 
+        #    ['pub_date', 'mod_date', 'author']}),
     ]
 
     inlines = [

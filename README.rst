@@ -10,8 +10,6 @@ version comes with great features (to be written yet)
 * Dynamic access depending on team
 * Support POST hooks for RTD and local sphinx.
 
-License: BSD 2-Clause
-
 Requirements
 ------------
 
@@ -39,3 +37,8 @@ I want to use it!
 
 Yeah, sorry, this project is still on incubation stage, but if you want to
 help to develop it, you're welcome! :)
+
+License
+-------
+
+Supervise is being developed and distributed on the BSD 2-Clause license.
