@@ -116,7 +116,8 @@ THIRDPARTY_APPS = (
     'apps.thirdparty.userena',
     'guardian',
     'easy_thumbnails',
-    'apps.thirdparty.taggit',
+    'taggit',
+    'rest_framework',
 )
 
 DJANGO_APPS = (
@@ -130,12 +131,14 @@ DJANGO_APPS = (
 )
 
 SUPERVISE_APPS = (
+    'core.api',
     'core.accounts',
     'apps.supervise.news',
     'apps.supervise.issues',
     'apps.supervise.projects',
     'apps.supervise.wiki',
     'apps.supervise.workgroups',
+    'south',  # South goes last so it can index all the application models.
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + SUPERVISE_APPS

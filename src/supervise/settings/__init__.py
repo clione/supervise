@@ -12,7 +12,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 __version__ = '2.0.0'
-__status__ = 'alpha'
+__status__ = 'dev'
 
 if DEBUG:
     from development import *

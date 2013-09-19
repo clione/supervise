@@ -10,7 +10,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from apps.thirdparty.taggit.managers import TaggableManager
+from taggit.managers import TaggableManager
 from apps.supervise.projects.models import Project
 
 

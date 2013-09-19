@@ -1,2 +1,5 @@
 django-userena
+PIL
+south
+easy_thumbnails
 django==1.4
