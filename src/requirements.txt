@@ -2,4 +2,4 @@ django-userena
 PIL
 south
 easy_thumbnails
-django==1.4
+django==1.11.29
